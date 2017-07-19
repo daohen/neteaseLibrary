@@ -2,10 +2,10 @@ package com.daohen.netease.library.im;
 
 import com.daohen.netease.library.im.observe.AuthServiceManager;
 import com.daohen.netease.library.im.tool.NLPreferences;
-import com.daohen.netease.library.im.tool.Utils;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Strings;
+import com.daohen.personal.toolbox.library.util.SystemUtil;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -81,7 +81,7 @@ public class NeteaseConnect {
 
         NIMClient.init(Contexts.getContext(), loginInfo, sdkOptions);
 
-        if (Utils.inMainProcess()){
+        if (SystemUtil.inMainProcess()){
             // TODO: 17/7/19 其它需要初始化的操作
             AuthServiceManager.get().observeOnlineStatus();
             AuthServiceManager.get().observeLoginSyncDataStatus();
