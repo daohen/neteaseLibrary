@@ -39,7 +39,7 @@ public class NLPreferences {
     private SharedPreferences preferences;
 
     private NLPreferences(){
-        preferences = Contexts.getContext().getSharedPreferences("netease_p", Context.MODE_PRIVATE);
+        preferences = Contexts.getContext().getSharedPreferences("netease", Context.MODE_PRIVATE);
     }
 
     private static final Singleton<NLPreferences> gDefault = new Singleton<NLPreferences>() {
