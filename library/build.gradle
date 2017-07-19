@@ -1,3 +1,5 @@
+import java.util.concurrent.TimeUnit
+
 apply plugin: 'com.android.library'
 
 android {
@@ -24,4 +26,10 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'com.netease.nimlib:basesdk:3.3.0'
+
+    provided 'com.github.daohen:personalToolboxLibrary:master-SNAPSHOT'
+}
+
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor(0, TimeUnit.SECONDS)
 }
