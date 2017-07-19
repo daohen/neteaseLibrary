@@ -25,8 +25,9 @@ public class TextMessageEmitter extends MessageEmitter {
 
     public static class Builder{
 
-        public IMMessage build(String sessionId, SessionTypeEnum sessionType, String text){
-            return MessageBuilder.createTextMessage(sessionId, sessionType, text);
+        public TextMessageEmitter build(String sessionId, SessionTypeEnum sessionType, String text){
+            IMMessage message = MessageBuilder.createTextMessage(sessionId, sessionType, text);
+            return new TextMessageEmitter(message);
         }
 
     }

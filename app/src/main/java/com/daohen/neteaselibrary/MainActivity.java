@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginProvider.get().login(new LoginInfo("daohen", "123456"), new NeteaseLoginListener() {
+                LoginProvider.get().login(new LoginInfo("daohen", "123456"), new NeteaseLoginListener<LoginInfo>() {
                     @Override
                     public void onSuccess(LoginInfo info) {
                         Logs.d("success");
