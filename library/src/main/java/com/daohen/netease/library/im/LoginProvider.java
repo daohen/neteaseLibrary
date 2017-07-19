@@ -10,6 +10,7 @@ import com.netease.nimlib.sdk.ResponseCode;
 import com.netease.nimlib.sdk.StatusCode;
 import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
+import com.netease.nimlib.sdk.auth.OnlineClient;
 
 /**
  * Created by alun on 17/7/18.
@@ -28,7 +29,7 @@ public class LoginProvider {
      * @param info
      * @param listener
      */
-    public void login(LoginInfo info, final NeteaseLoginListener listener){
+    public void login(LoginInfo info, final NeteaseLoginListener<LoginInfo> listener){
         loginInfoAbortableFuture = authService.login(info);
         loginInfoAbortableFuture.setCallback(new RequestCallbackWrapper<LoginInfo>() {
             @Override
@@ -59,10 +60,42 @@ public class LoginProvider {
         return loginInfoAbortableFuture == null ? false : loginInfoAbortableFuture.abort();
     }
 
-
+    /**
+     * 退出
+     */
+    public void logout(){
+        authService.logout();
+    }
 
     public StatusCode getCurrentStatus(){
         return NIMClient.getStatus();
+    }
+
+    /**
+     * 踢掉其它客户端
+     * @param onlineClient
+     * @param listener
+     */
+    public void kickOtherClient(OnlineClient onlineClient, final NeteaseLoginListener<Void> listener){
+        authService.kickOtherClient(onlineClient)
+                .setCallback(new RequestCallbackWrapper<Void>() {
+                    @Override
+                    public void onResult(int code, Void result, Throwable exception) {
+                        switch (code){
+                            case ResponseCode.RES_SUCCESS:
+                                NLPreferences.get().clear();
+
+                                listener.onSuccess(result);
+                                break;
+                            case ResponseCode.RES_EXCEPTION:
+                                listener.onFail(exception);
+                                break;
+                            default:
+                                listener.onFail(new Throwable("请求失败"));
+                                break;
+                        }
+                    }
+                });
     }
 
     private AuthService authService;

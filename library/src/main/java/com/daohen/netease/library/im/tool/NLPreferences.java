@@ -32,6 +32,10 @@ public class NLPreferences {
         return preferences.getString("token", null);
     }
 
+    public void clear(){
+        preferences.edit().clear().apply();
+    }
+
     private SharedPreferences preferences;
 
     private NLPreferences(){

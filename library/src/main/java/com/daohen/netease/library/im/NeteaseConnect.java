@@ -82,8 +82,10 @@ public class NeteaseConnect {
         NIMClient.init(Contexts.getContext(), loginInfo, sdkOptions);
 
         if (Utils.inMainProcess()){
-            // TODO: 17/7/19 其它需要登录才能初始化的操作
+            // TODO: 17/7/19 其它需要初始化的操作
             AuthServiceManager.get().observeOnlineStatus();
+            AuthServiceManager.get().observeLoginSyncDataStatus();
+            AuthServiceManager.get().observeOtherClients();
         }
     }
 

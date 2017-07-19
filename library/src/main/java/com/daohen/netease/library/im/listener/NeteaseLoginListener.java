@@ -1,13 +1,13 @@
 package com.daohen.netease.library.im.listener;
 
-import com.netease.nimlib.sdk.auth.LoginInfo;
-
 /**
  * Created by alun on 17/7/19.
  */
 
-public interface NeteaseLoginListener {
+public interface NeteaseLoginListener<T> {
 
-    void onSuccess(LoginInfo info);
+    void onSuccess(T t);
+
     void onFail(Throwable t);
+
 }
