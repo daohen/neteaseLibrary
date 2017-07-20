@@ -94,6 +94,10 @@ public class MsgServiceManager {
         msgService.deleteRecentContact(recent);
     }
 
+    public void sendMessageReceipt(String sessionId, IMMessage message){
+        msgService.sendMessageReceipt(sessionId, message);
+    }
+
 
 
     private MsgServiceObserve msgServiceObserve;
