@@ -7,11 +7,11 @@ import com.netease.nimlib.sdk.msg.model.IMMessage;
 /**
  * CREATE BY DAOHEN
  * EMAIL: alunfeixue2011@gmail.com
- * DATA : 2017/07/20 00:50
+ * DATE : 2017/07/20 09:50
  */
-public class TextMessageEmitter extends MessageEmitter {
+public class LocationMessageEmitter extends MessageEmitter {
 
-    public TextMessageEmitter(IMMessage imMessage) {
+    public LocationMessageEmitter(IMMessage imMessage) {
         super(imMessage);
     }
 
@@ -20,12 +20,14 @@ public class TextMessageEmitter extends MessageEmitter {
         /**
          * @param sessionId 聊天对象的 ID，如果是单聊，为用户帐号，如果是群聊，为群组 ID
          * @param sessionType 聊天类型，单聊或群组
-         * @param text 文本内容
+         * @param lat 纬度
+         * @param lng 经度
+         * @param addr 地址信息描述
          * @return
          */
-        public TextMessageEmitter build(String sessionId, SessionTypeEnum sessionType, String text){
-            IMMessage message = MessageBuilder.createTextMessage(sessionId, sessionType, text);
-            return new TextMessageEmitter(message);
+        public LocationMessageEmitter build(String sessionId, SessionTypeEnum sessionType, double lat, double lng, String addr){
+            IMMessage imMessage = MessageBuilder.createLocationMessage(sessionId, sessionType, lat, lng, addr);
+            return new LocationMessageEmitter(imMessage);
         }
 
     }

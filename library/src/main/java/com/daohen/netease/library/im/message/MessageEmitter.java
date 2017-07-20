@@ -11,15 +11,19 @@ import com.netease.nimlib.sdk.msg.model.IMMessage;
  * EMAIL: alunfeixue2011@gmail.com
  * DATA : 2017/07/20 00:51
  */
-public abstract class MessageEmitter {
+public class MessageEmitter {
 
     private MsgService msgService;
+    private IMMessage imMessage;
 
-    public MessageEmitter(){
+    public MessageEmitter(IMMessage imMessage){
         msgService = NIMClient.getService(MsgService.class);
+        this.imMessage = imMessage;
     }
 
-    public abstract IMMessage getMessage();
+    public IMMessage getMessage(){
+        return imMessage;
+    }
 
     public void sendMessage(boolean resend, RequestCallbackWrapper<Void> callback){
         InvocationFuture<Void> invocationFuture = msgService.sendMessage(getMessage(), resend);
