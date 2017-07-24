@@ -31,12 +31,12 @@ public class NeteaseGlobalObserve {
     }
 
     public NeteaseGlobalObserve addObserveLoginSyncDataStatus(Observer<LoginSyncStatus> observer){
-        AuthServiceManager.get().observeLoginSyncDataStatus(observer);
+        AuthServiceManager.get().getAuthServiceObserver().observeLoginSyncDataStatus(observer, true);
         return this;
     }
 
     public NeteaseGlobalObserve addObserveOtherClients(Observer<List<OnlineClient>> observer){
-        AuthServiceManager.get().observeOtherClients(observer);
+        AuthServiceManager.get().getAuthServiceObserver().observeOtherClients(observer, true);
         return this;
     }
 

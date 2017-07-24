@@ -23,7 +23,7 @@ public class LoginProvider {
     }
 
     public void logout(){
-        AuthServiceManager.get().logout();
+        AuthServiceManager.get().getAuthService().logout();
     }
 
     public StatusCode getCurrentStatus(){
