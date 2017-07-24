@@ -5,7 +5,7 @@ import com.netease.nimlib.sdk.RequestCallback;
 
 public abstract class AbstractRequestCallback<T> implements RequestCallback<T> {
 
-    public static <B> AbstractRequestCallback getDefault(NeteaseCallback<B> callback){
+    public static <B> AbstractRequestCallback<B> getDefault(NeteaseCallback<B> callback){
         return new AbstractRequestCallback<B>(callback) {
             @Override
             public void onSuccessBefore(B param) {

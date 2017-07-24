@@ -1,11 +1,14 @@
 package com.daohen.netease.library.im;
 
 import com.daohen.netease.library.im.observe.AuthServiceManager;
+import com.daohen.netease.library.im.observe.MsgServiceManager;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.StatusCode;
 import com.netease.nimlib.sdk.auth.OnlineClient;
 import com.netease.nimlib.sdk.auth.constant.LoginSyncStatus;
+import com.netease.nimlib.sdk.msg.attachment.MsgAttachmentParser;
+import com.netease.nimlib.sdk.msg.model.CustomNotification;
 
 import java.util.List;
 
@@ -35,6 +38,15 @@ public class NeteaseGlobalObserve {
     public NeteaseGlobalObserve addObserveOtherClients(Observer<List<OnlineClient>> observer){
         AuthServiceManager.get().observeOtherClients(observer);
         return this;
+    }
+
+    public NeteaseGlobalObserve addObserveCustomNotification(Observer<CustomNotification> observer){
+        MsgServiceManager.get().getMsgServiceObserve().observeCustomNotification(observer, true);
+        return this;
+    }
+
+    public void addRegisterCustomAttachmentParser(MsgAttachmentParser customParser){
+        MsgServiceManager.get().getMsgService().registerCustomAttachmentParser(customParser);
     }
 
     private static final Singleton<NeteaseGlobalObserve> gDefault = new Singleton<NeteaseGlobalObserve>() {

@@ -9,7 +9,7 @@ import com.netease.nimlib.sdk.Observer;
  */
 public abstract class AbstractObserver<T> implements Observer<T> {
 
-    public static <B> AbstractObserver getDefault(Observer<B> observer){
+    public static <B> AbstractObserver<B> getDefault(Observer<B> observer){
         return new AbstractObserver<B>(observer) {
             @Override
             public void onEventBefore(B b) {

@@ -38,19 +38,6 @@ public class AuthServiceManager {
         }, true);
     }
 
-    public void observeLoginSyncDataStatus(Observer<LoginSyncStatus> observer){
-        authServiceObserver.observeLoginSyncDataStatus(AbstractObserver.getDefault(observer), true);
-    }
-
-    public void observeOtherClients(Observer<List<OnlineClient>> observer){
-        authServiceObserver.observeOtherClients(AbstractObserver.getDefault(observer), true);
-    }
-
-
-    public void logout(){
-        authService.logout();
-    }
-
     public void login(LoginInfo info, final NeteaseCallback<LoginInfo> callback){
         authService.login(info).setCallback(new AbstractRequestCallback<LoginInfo>(callback) {
             @Override
@@ -65,6 +52,14 @@ public class AuthServiceManager {
         authService.kickOtherClient(client).setCallback(AbstractRequestCallback.getDefault(callback));
     }
 
+
+    public AuthService getAuthService(){
+        return authService;
+    }
+
+    public AuthServiceObserver getAuthServiceObserver(){
+        return authServiceObserver;
+    }
 
     private AuthServiceObserver authServiceObserver;
     private AuthService authService;
