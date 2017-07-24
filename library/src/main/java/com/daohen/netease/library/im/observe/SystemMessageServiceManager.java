@@ -4,6 +4,7 @@ import com.daohen.netease.library.im.callback.AbstractRequestCallback;
 import com.daohen.netease.library.im.callback.NeteaseCallback;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.msg.SystemMessageObserver;
 import com.netease.nimlib.sdk.msg.SystemMessageService;
 import com.netease.nimlib.sdk.msg.constant.SystemMessageType;
 import com.netease.nimlib.sdk.msg.model.SystemMessage;
@@ -37,10 +38,21 @@ public class SystemMessageServiceManager {
         systemMessageService.querySystemMessageUnreadCount().setCallback(AbstractRequestCallback.getDefault(callback));
     }
 
+
+    public SystemMessageService getSystemMessageService(){
+        return systemMessageService;
+    }
+
+    public SystemMessageObserver getSystemMessageObserver(){
+        return systemMessageObserver;
+    }
+
     private SystemMessageService systemMessageService;
+    private SystemMessageObserver systemMessageObserver;
 
     private SystemMessageServiceManager(){
         systemMessageService = NIMClient.getService(SystemMessageService.class);
+        systemMessageObserver = NIMClient.getService(SystemMessageObserver.class);
     }
 
     private static final Singleton<SystemMessageServiceManager> gDefault = new Singleton<SystemMessageServiceManager>() {
