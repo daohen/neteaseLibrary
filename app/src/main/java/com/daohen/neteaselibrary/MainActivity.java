@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.daohen.netease.library.im.LoginProvider;
-import com.daohen.netease.library.im.listener.NeteaseLoginListener;
+import com.daohen.netease.library.im.callback.NeteaseCallback;
 import com.daohen.personal.toolbox.library.util.Logs;
 import com.daohen.personal.toolbox.library.util.Toasts;
 import com.netease.nimlib.sdk.auth.LoginInfo;
@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LoginProvider.get().login(new LoginInfo("daohen", "123456"), new NeteaseLoginListener<LoginInfo>() {
+                LoginProvider.get().login(new LoginInfo("daohen", "123456"), new NeteaseCallback<LoginInfo>() {
                     @Override
                     public void onSuccess(LoginInfo info) {
                         Logs.d("success");

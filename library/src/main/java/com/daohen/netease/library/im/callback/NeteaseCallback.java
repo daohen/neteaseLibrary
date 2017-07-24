@@ -1,10 +1,10 @@
-package com.daohen.netease.library.im.listener;
+package com.daohen.netease.library.im.callback;
 
 /**
  * Created by alun on 17/7/19.
  */
 
-public interface NeteaseLoginListener<T> {
+public interface NeteaseCallback<T> {
 
     void onSuccess(T t);
 

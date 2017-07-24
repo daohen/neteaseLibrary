@@ -1,11 +1,9 @@
 package com.daohen.netease.library.im;
 
-import com.daohen.netease.library.im.observe.AuthServiceManager;
-import com.daohen.netease.library.im.tool.NLPreferences;
+import com.daohen.netease.library.im.tool.NeteasePreferences;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Strings;
-import com.daohen.personal.toolbox.library.util.SystemUtil;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -80,20 +78,13 @@ public class NeteaseConnect {
             throw new NullPointerException("NeteaseConnect里面的appkey没有设置，请调用register()方法");
 
         NIMClient.init(Contexts.getContext(), loginInfo, sdkOptions);
-
-        if (SystemUtil.inMainProcess()){
-            // TODO: 17/7/19 其它需要初始化的操作
-            AuthServiceManager.get().observeOnlineStatus();
-            AuthServiceManager.get().observeLoginSyncDataStatus();
-            AuthServiceManager.get().observeOtherClients();
-        }
     }
 
     private NeteaseConnect(){
         sdkOptions = new SDKOptions();
         sdkOptions.databaseEncryptKey = "netease_daohen";
-        if (!Strings.isNull(NLPreferences.get().getAccount()) && !Strings.isNull(NLPreferences.get().getToken())){
-            loginInfo = new LoginInfo(NLPreferences.get().getAccount(), NLPreferences.get().getToken());
+        if (!Strings.isNull(NeteasePreferences.get().getAccount()) && !Strings.isNull(NeteasePreferences.get().getToken())){
+            loginInfo = new LoginInfo(NeteasePreferences.get().getAccount(), NeteasePreferences.get().getToken());
         }
     }
 

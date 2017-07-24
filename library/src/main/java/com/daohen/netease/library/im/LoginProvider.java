@@ -1,14 +1,10 @@
 package com.daohen.netease.library.im;
 
-import com.daohen.netease.library.im.listener.NeteaseLoginListener;
-import com.daohen.netease.library.im.tool.NLPreferences;
+import com.daohen.netease.library.im.callback.NeteaseCallback;
+import com.daohen.netease.library.im.observe.AuthServiceManager;
 import com.daohen.personal.toolbox.library.Singleton;
-import com.netease.nimlib.sdk.AbortableFuture;
 import com.netease.nimlib.sdk.NIMClient;
-import com.netease.nimlib.sdk.RequestCallbackWrapper;
-import com.netease.nimlib.sdk.ResponseCode;
 import com.netease.nimlib.sdk.StatusCode;
-import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 import com.netease.nimlib.sdk.auth.OnlineClient;
 
@@ -22,86 +18,20 @@ public class LoginProvider {
         return gDefault.get();
     }
 
-    private AbortableFuture<LoginInfo> loginInfoAbortableFuture;
-
-    /**
-     * 手动登陆
-     * @param info
-     * @param listener
-     */
-    public void login(LoginInfo info, final NeteaseLoginListener<LoginInfo> listener){
-        loginInfoAbortableFuture = authService.login(info);
-        loginInfoAbortableFuture.setCallback(new RequestCallbackWrapper<LoginInfo>() {
-            @Override
-            public void onResult(int code, LoginInfo result, Throwable exception) {
-                switch (code){
-                    case ResponseCode.RES_SUCCESS:
-                        NLPreferences.get().setAccount(result.getAccount());
-                        NLPreferences.get().setToken(result.getToken());
-
-                        listener.onSuccess(result);
-                        break;
-                    case ResponseCode.RES_EXCEPTION:
-                        listener.onFail(exception);
-                        break;
-                    default:
-                        listener.onFail(new Throwable("请求失败"));
-                        break;
-                }
-            }
-        });
+    public void login(LoginInfo info, final NeteaseCallback<LoginInfo> callback){
+        AuthServiceManager.get().login(info, callback);
     }
 
-    /**
-     * 取消手动登陆
-     * @return
-     */
-    public boolean unLogin(){
-        return loginInfoAbortableFuture == null ? false : loginInfoAbortableFuture.abort();
-    }
-
-    /**
-     * 退出
-     */
     public void logout(){
-        authService.logout();
+        AuthServiceManager.get().logout();
     }
 
     public StatusCode getCurrentStatus(){
         return NIMClient.getStatus();
     }
 
-    /**
-     * 踢掉其它客户端
-     * @param onlineClient
-     * @param listener
-     */
-    public void kickOtherClient(OnlineClient onlineClient, final NeteaseLoginListener<Void> listener){
-        authService.kickOtherClient(onlineClient)
-                .setCallback(new RequestCallbackWrapper<Void>() {
-                    @Override
-                    public void onResult(int code, Void result, Throwable exception) {
-                        switch (code){
-                            case ResponseCode.RES_SUCCESS:
-                                NLPreferences.get().clear();
-
-                                listener.onSuccess(result);
-                                break;
-                            case ResponseCode.RES_EXCEPTION:
-                                listener.onFail(exception);
-                                break;
-                            default:
-                                listener.onFail(new Throwable("请求失败"));
-                                break;
-                        }
-                    }
-                });
-    }
-
-    private AuthService authService;
-
-    private LoginProvider(){
-        authService = NIMClient.getService(AuthService.class);
+    public void kickOtherClient(OnlineClient onlineClient, NeteaseCallback<Void> callback){
+        AuthServiceManager.get().kickOtherClient(onlineClient, callback);
     }
 
     private static final Singleton<LoginProvider> gDefault = new Singleton<LoginProvider>() {

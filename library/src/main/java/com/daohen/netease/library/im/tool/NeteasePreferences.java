@@ -10,9 +10,9 @@ import com.daohen.personal.toolbox.library.util.Contexts;
  * Created by alun on 17/7/18.
  */
 
-public class NLPreferences {
+public class NeteasePreferences {
 
-    public static NLPreferences get(){
+    public static NeteasePreferences get(){
         return gDefault.get();
     }
 
@@ -38,14 +38,14 @@ public class NLPreferences {
 
     private SharedPreferences preferences;
 
-    private NLPreferences(){
+    private NeteasePreferences(){
         preferences = Contexts.getContext().getSharedPreferences("netease", Context.MODE_PRIVATE);
     }
 
-    private static final Singleton<NLPreferences> gDefault = new Singleton<NLPreferences>() {
+    private static final Singleton<NeteasePreferences> gDefault = new Singleton<NeteasePreferences>() {
         @Override
-        protected NLPreferences create() {
-            return new NLPreferences();
+        protected NeteasePreferences create() {
+            return new NeteasePreferences();
         }
     };
 
