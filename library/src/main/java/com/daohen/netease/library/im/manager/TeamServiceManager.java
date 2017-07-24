@@ -1,9 +1,8 @@
-package com.daohen.netease.library.im.observe;
+package com.daohen.netease.library.im.manager;
 
 import com.daohen.netease.library.im.callback.AbstractRequestCallback;
 import com.daohen.netease.library.im.callback.NeteaseCallback;
 import com.daohen.personal.toolbox.library.Singleton;
-import com.netease.nimlib.sdk.InvocationFuture;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.team.TeamService;
 import com.netease.nimlib.sdk.team.TeamServiceObserver;

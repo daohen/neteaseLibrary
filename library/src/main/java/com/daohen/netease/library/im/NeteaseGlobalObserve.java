@@ -1,7 +1,7 @@
 package com.daohen.netease.library.im;
 
-import com.daohen.netease.library.im.observe.AuthServiceManager;
-import com.daohen.netease.library.im.observe.MsgServiceManager;
+import com.daohen.netease.library.im.manager.AuthServiceManager;
+import com.daohen.netease.library.im.manager.MsgServiceManager;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.StatusCode;

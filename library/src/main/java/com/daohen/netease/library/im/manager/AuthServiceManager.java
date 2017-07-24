@@ -1,11 +1,10 @@
-package com.daohen.netease.library.im.observe;
+package com.daohen.netease.library.im.manager;
 
 import com.daohen.netease.library.im.callback.AbstractObserver;
 import com.daohen.netease.library.im.callback.AbstractRequestCallback;
 import com.daohen.netease.library.im.callback.NeteaseCallback;
 import com.daohen.netease.library.im.tool.NeteasePreferences;
 import com.daohen.personal.toolbox.library.Singleton;
-import com.daohen.personal.toolbox.library.util.Logs;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
 import com.netease.nimlib.sdk.StatusCode;
@@ -13,9 +12,6 @@ import com.netease.nimlib.sdk.auth.AuthService;
 import com.netease.nimlib.sdk.auth.AuthServiceObserver;
 import com.netease.nimlib.sdk.auth.LoginInfo;
 import com.netease.nimlib.sdk.auth.OnlineClient;
-import com.netease.nimlib.sdk.auth.constant.LoginSyncStatus;
-
-import java.util.List;
 
 /**
  * Created by alun on 17/7/19.

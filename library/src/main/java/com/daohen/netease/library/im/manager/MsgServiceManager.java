@@ -1,4 +1,4 @@
-package com.daohen.netease.library.im.observe;
+package com.daohen.netease.library.im.manager;
 
 import com.daohen.netease.library.im.callback.AbstractRequestCallback;
 import com.daohen.netease.library.im.callback.NeteaseCallback;
