@@ -1,4 +1,4 @@
-package com.daohen.netease.library.im.tool;
+package com.daohen.netease.library.tool;
 
 import android.content.Context;
 import android.content.SharedPreferences;

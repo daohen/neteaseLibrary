@@ -2,7 +2,7 @@ package com.daohen.neteaselibrary;
 
 import android.app.Application;
 
-import com.daohen.netease.library.im.NeteaseConnect;
+import com.daohen.netease.library.NeteaseConnect;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Files;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;

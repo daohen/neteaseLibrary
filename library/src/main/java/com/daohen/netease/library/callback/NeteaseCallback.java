@@ -1,4 +1,4 @@
-package com.daohen.netease.library.im.callback;
+package com.daohen.netease.library.callback;
 
 /**
  * Created by alun on 17/7/19.

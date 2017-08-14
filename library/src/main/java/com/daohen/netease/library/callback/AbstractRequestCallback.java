@@ -1,4 +1,4 @@
-package com.daohen.netease.library.im.callback;
+package com.daohen.netease.library.callback;
 
 import com.netease.nimlib.sdk.RequestCallback;
 

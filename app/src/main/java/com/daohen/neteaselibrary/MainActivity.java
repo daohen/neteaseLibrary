@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.daohen.netease.library.im.LoginProvider;
-import com.daohen.netease.library.im.callback.NeteaseCallback;
+import com.daohen.netease.library.LoginProvider;
+import com.daohen.netease.library.callback.NeteaseCallback;
 import com.daohen.personal.toolbox.library.util.Logs;
 import com.daohen.personal.toolbox.library.util.Toasts;
 import com.netease.nimlib.sdk.auth.LoginInfo;

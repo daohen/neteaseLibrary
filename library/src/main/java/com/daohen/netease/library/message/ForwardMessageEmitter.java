@@ -1,4 +1,4 @@
-package com.daohen.netease.library.im.message;
+package com.daohen.netease.library.message;
 
 import com.netease.nimlib.sdk.msg.MessageBuilder;
 import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;

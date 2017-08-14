@@ -1,7 +1,7 @@
-package com.daohen.netease.library.im.manager;
+package com.daohen.netease.library.manager;
 
-import com.daohen.netease.library.im.callback.AbstractRequestCallback;
-import com.daohen.netease.library.im.callback.NeteaseCallback;
+import com.daohen.netease.library.callback.AbstractRequestCallback;
+import com.daohen.netease.library.callback.NeteaseCallback;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.uinfo.UserService;

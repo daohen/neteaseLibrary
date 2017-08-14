@@ -1,6 +1,6 @@
-package com.daohen.netease.library.im;
+package com.daohen.netease.library;
 
-import com.daohen.netease.library.im.tool.NeteasePreferences;
+import com.daohen.netease.library.tool.NeteasePreferences;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Strings;
