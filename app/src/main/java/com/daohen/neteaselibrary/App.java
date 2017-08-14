@@ -30,5 +30,7 @@ public class App extends Application {
                 .thumbnailSize(Contexts.getScreenWidth() / 3)
                 .init();
 
+
+
     }
 }
