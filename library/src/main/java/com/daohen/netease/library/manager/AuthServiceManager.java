@@ -23,7 +23,7 @@ public class AuthServiceManager {
         return gDefault.get();
     }
 
-    public void observeOnlineStatus(Observer<StatusCode> observer){
+    public void observeOnlineStatus(Observer<StatusCode> observer, boolean register){
         authServiceObserver.observeOnlineStatus(new AbstractObserver<StatusCode>(observer) {
             @Override
             public void onEventBefore(StatusCode statusCode) {
@@ -31,7 +31,7 @@ public class AuthServiceManager {
                     NeteasePreferences.get().clear();
                 }
             }
-        }, true);
+        }, register);
     }
 
     public void login(LoginInfo info, final NeteaseCallback<LoginInfo> callback){

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((TextView) findViewById(R.id.tv1)).setText("当前状态："+LoginProvider.get().getCurrentStatus().getValue());
+        ((TextView) findViewById(R.id.tv1)).setText("当前状态："+ LoginProvider.get().getCurrentStatus().getValue());
 
         findViewById(R.id.btn1).setOnClickListener(new View.OnClickListener() {
             @Override

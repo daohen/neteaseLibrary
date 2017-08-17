@@ -143,6 +143,14 @@ public class TeamServiceManager {
     }
 
 
+    public TeamService getTeamService(){
+        return teamService;
+    }
+
+    public TeamServiceObserver getTeamServiceObserver(){
+        return teamServiceObserver;
+    }
+
     private TeamService teamService;
     private TeamServiceObserver teamServiceObserver;
 
