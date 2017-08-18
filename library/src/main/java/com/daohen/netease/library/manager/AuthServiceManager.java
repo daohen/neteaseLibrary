@@ -3,7 +3,7 @@ package com.daohen.netease.library.manager;
 import com.daohen.netease.library.callback.AbstractObserver;
 import com.daohen.netease.library.callback.AbstractRequestCallback;
 import com.daohen.netease.library.callback.NeteaseCallback;
-import com.daohen.netease.library.tool.NeteasePreferences;
+import com.daohen.netease.library.tool.NimPreferences;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.Observer;
@@ -28,7 +28,7 @@ public class AuthServiceManager {
             @Override
             public void onEventBefore(StatusCode statusCode) {
                 if (statusCode.wontAutoLogin()){
-                    NeteasePreferences.get().clear();
+                    NimPreferences.get().clear();
                 }
             }
         }, register);
@@ -38,8 +38,8 @@ public class AuthServiceManager {
         authService.login(info).setCallback(new AbstractRequestCallback<LoginInfo>(callback) {
             @Override
             public void onSuccessBefore(LoginInfo param) {
-                NeteasePreferences.get().setAccount(param.getAccount());
-                NeteasePreferences.get().setToken(param.getToken());
+                NimPreferences.get().setAccount(param.getAccount());
+                NimPreferences.get().setToken(param.getToken());
             }
         });
     }

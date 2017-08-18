@@ -10,9 +10,9 @@ import com.daohen.personal.toolbox.library.util.Contexts;
  * Created by alun on 17/7/18.
  */
 
-public class NeteasePreferences {
+public class NimPreferences {
 
-    public static NeteasePreferences get(){
+    public static NimPreferences get(){
         return gDefault.get();
     }
 
@@ -38,14 +38,14 @@ public class NeteasePreferences {
 
     private SharedPreferences preferences;
 
-    private NeteasePreferences(){
+    private NimPreferences(){
         preferences = Contexts.getContext().getSharedPreferences("netease", Context.MODE_PRIVATE);
     }
 
-    private static final Singleton<NeteasePreferences> gDefault = new Singleton<NeteasePreferences>() {
+    private static final Singleton<NimPreferences> gDefault = new Singleton<NimPreferences>() {
         @Override
-        protected NeteasePreferences create() {
-            return new NeteasePreferences();
+        protected NimPreferences create() {
+            return new NimPreferences();
         }
     };
 

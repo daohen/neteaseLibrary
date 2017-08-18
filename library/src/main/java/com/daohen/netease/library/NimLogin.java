@@ -2,6 +2,7 @@ package com.daohen.netease.library;
 
 import com.daohen.netease.library.callback.NeteaseCallback;
 import com.daohen.netease.library.manager.AuthServiceManager;
+import com.daohen.netease.library.tool.NimPreferences;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.StatusCode;
@@ -22,8 +23,13 @@ public class NimLogin {
         AuthServiceManager.get().login(info, callback);
     }
 
+    public LoginInfo getLoginInfo(){
+        return new LoginInfo(NimPreferences.get().getAccount(), NimPreferences.get().getToken());
+    }
+
     public void logout(){
         AuthServiceManager.get().getAuthService().logout();
+        NimPreferences.get().clear();
     }
 
     public StatusCode getCurrentStatus(){

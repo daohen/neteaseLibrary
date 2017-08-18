@@ -1,6 +1,6 @@
 package com.daohen.netease.library;
 
-import com.daohen.netease.library.tool.NeteasePreferences;
+import com.daohen.netease.library.tool.NimPreferences;
 import com.daohen.personal.toolbox.library.Singleton;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Strings;
@@ -83,8 +83,8 @@ public class NimConnect {
     private NimConnect(){
         sdkOptions = new SDKOptions();
         sdkOptions.databaseEncryptKey = "netease_daohen";
-        if (!Strings.isNull(NeteasePreferences.get().getAccount()) && !Strings.isNull(NeteasePreferences.get().getToken())){
-            loginInfo = new LoginInfo(NeteasePreferences.get().getAccount(), NeteasePreferences.get().getToken());
+        if (!Strings.isNull(NimPreferences.get().getAccount()) && !Strings.isNull(NimPreferences.get().getToken())){
+            loginInfo = new LoginInfo(NimPreferences.get().getAccount(), NimPreferences.get().getToken());
         }
     }
 
