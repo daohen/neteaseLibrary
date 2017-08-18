@@ -12,6 +12,7 @@ import com.netease.nimlib.sdk.auth.constant.LoginSyncStatus;
 import com.netease.nimlib.sdk.msg.attachment.MsgAttachmentParser;
 import com.netease.nimlib.sdk.msg.model.CustomNotification;
 import com.netease.nimlib.sdk.msg.model.SystemMessage;
+import com.netease.nimlib.sdk.team.model.IMMessageFilter;
 import com.netease.nimlib.sdk.team.model.Team;
 
 import java.util.List;
@@ -23,9 +24,9 @@ import java.util.List;
  * EMAIL: alunfeixue2011@gmail.com
  * DATE : 2017/07/24 12:00
  */
-public class NeteaseGlobalObserve {
+public class NimGlobalObserve {
 
-    public static NeteaseGlobalObserve get(){
+    public static NimGlobalObserve get(){
         return gDefault.get();
     }
 
@@ -37,51 +38,56 @@ public class NeteaseGlobalObserve {
     private Observer<Integer> unreadCountChangeObserver;
 
 
-    public NeteaseGlobalObserve addObserveOnlineStatus(Observer<StatusCode> observer){
+    public NimGlobalObserve addObserveOnlineStatus(Observer<StatusCode> observer){
         AuthServiceManager.get().observeOnlineStatus(onlineStatusObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addObserveLoginSyncDataStatus(Observer<LoginSyncStatus> observer){
+    public NimGlobalObserve addObserveLoginSyncDataStatus(Observer<LoginSyncStatus> observer){
         AuthServiceManager.get().getAuthServiceObserver().observeLoginSyncDataStatus(loginSyncStatusObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addObserveOtherClients(Observer<List<OnlineClient>> observer){
+    public NimGlobalObserve addObserveOtherClients(Observer<List<OnlineClient>> observer){
         AuthServiceManager.get().getAuthServiceObserver().observeOtherClients(otherClientsObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addObserveCustomNotification(Observer<CustomNotification> observer){
+    public NimGlobalObserve addObserveCustomNotification(Observer<CustomNotification> observer){
         MsgServiceManager.get().getMsgServiceObserve().observeCustomNotification(customNotificationObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addRegisterCustomAttachmentParser(MsgAttachmentParser customParser){
+    public NimGlobalObserve addRegisterCustomAttachmentParser(MsgAttachmentParser customParser){
         MsgServiceManager.get().getMsgService().registerCustomAttachmentParser(customParser);
         return this;
     }
 
-    public NeteaseGlobalObserve addObserveReceiveSystemMsg(Observer<SystemMessage> observer){
+    public NimGlobalObserve addObserveReceiveSystemMsg(Observer<SystemMessage> observer){
         SystemMessageServiceManager.get().getSystemMessageObserver().observeReceiveSystemMsg(receiveSystemMsgObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addUnreadCountChange(Observer<Integer> observer){
+    public NimGlobalObserve addUnreadCountChange(Observer<Integer> observer){
         SystemMessageServiceManager.get().getSystemMessageObserver().observeUnreadCountChange(unreadCountChangeObserver = observer, true);
         return this;
     }
 
-    public NeteaseGlobalObserve addObserveTeamRemove(Observer<Team> observer){
+    public NimGlobalObserve addObserveTeamRemove(Observer<Team> observer){
         TeamServiceManager.get().getTeamServiceObserver().observeTeamRemove(observer, true);
         return this;
     }
 
+    public NimGlobalObserve addIMMessageFilter(IMMessageFilter filter){
+        MsgServiceManager.get().getMsgService().registerIMMessageFilter(filter);
+        return this;
+    }
 
-    private static final Singleton<NeteaseGlobalObserve> gDefault = new Singleton<NeteaseGlobalObserve>() {
+
+    private static final Singleton<NimGlobalObserve> gDefault = new Singleton<NimGlobalObserve>() {
         @Override
-        protected NeteaseGlobalObserve create() {
-            return new NeteaseGlobalObserve();
+        protected NimGlobalObserve create() {
+            return new NimGlobalObserve();
         }
     };
 }

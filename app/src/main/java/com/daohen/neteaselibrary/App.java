@@ -2,7 +2,7 @@ package com.daohen.neteaselibrary;
 
 import android.app.Application;
 
-import com.daohen.netease.library.NeteaseConnect;
+import com.daohen.netease.library.NimConnect;
 import com.daohen.personal.toolbox.library.util.Contexts;
 import com.daohen.personal.toolbox.library.util.Files;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -22,7 +22,7 @@ public class App extends Application {
 
         Contexts.setContext(this);
 
-        NeteaseConnect.get().register(appkey)
+        NimConnect.get().register(appkey)
                 .preloadAttach(true)
                 .sdkStorageRootPath(Files.getFilesPath())
                 .sessionReadAck(true)

@@ -12,9 +12,9 @@ import com.netease.nimlib.sdk.auth.OnlineClient;
  * Created by alun on 17/7/18.
  */
 
-public class LoginProvider {
+public class NimLogin {
 
-    public static LoginProvider get(){
+    public static NimLogin get(){
         return gDefault.get();
     }
 
@@ -34,10 +34,10 @@ public class LoginProvider {
         AuthServiceManager.get().kickOtherClient(onlineClient, callback);
     }
 
-    private static final Singleton<LoginProvider> gDefault = new Singleton<LoginProvider>() {
+    private static final Singleton<NimLogin> gDefault = new Singleton<NimLogin>() {
         @Override
-        protected LoginProvider create() {
-            return new LoginProvider();
+        protected NimLogin create() {
+            return new NimLogin();
         }
     };
 }

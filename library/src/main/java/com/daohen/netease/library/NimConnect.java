@@ -16,9 +16,9 @@ import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
  * Created by alun on 17/7/18.
  */
 
-public class NeteaseConnect {
+public class NimConnect {
 
-    public static NeteaseConnect get(){
+    public static NimConnect get(){
         return gDefault.get();
     }
 
@@ -27,48 +27,48 @@ public class NeteaseConnect {
     private SDKOptions sdkOptions;
     private LoginInfo loginInfo;
 
-    public NeteaseConnect register(String appkey){
+    public NimConnect register(String appkey){
         this.appkey = appkey;
         sdkOptions.appKey = appkey;
         return this;
     }
 
-    public NeteaseConnect statusBarNotificationConfig(StatusBarNotificationConfig config){
+    public NimConnect statusBarNotificationConfig(StatusBarNotificationConfig config){
         sdkOptions.statusBarNotificationConfig = config;
         return this;
     }
 
-    public NeteaseConnect userInfoProvider(UserInfoProvider userInfoProvider){
+    public NimConnect userInfoProvider(UserInfoProvider userInfoProvider){
         sdkOptions.userInfoProvider = userInfoProvider;
         return this;
     }
 
-    public NeteaseConnect thumbnailSize(int thumbnailSize){
+    public NimConnect thumbnailSize(int thumbnailSize){
         sdkOptions.thumbnailSize = thumbnailSize;
         return this;
     }
 
-    public NeteaseConnect preloadAttach(boolean preloadAttach){
+    public NimConnect preloadAttach(boolean preloadAttach){
         sdkOptions.preloadAttach = preloadAttach;
         return this;
     }
 
-    public NeteaseConnect sdkStorageRootPath(String sdkStorageRootPath){
+    public NimConnect sdkStorageRootPath(String sdkStorageRootPath){
         sdkOptions.sdkStorageRootPath = sdkStorageRootPath;
         return this;
     }
 
-    public NeteaseConnect sessionReadAck(boolean sessionReadAck){
+    public NimConnect sessionReadAck(boolean sessionReadAck){
         sdkOptions.sessionReadAck = sessionReadAck;
         return this;
     }
 
-    public NeteaseConnect messageNotifierCustomization(MessageNotifierCustomization messageNotifierCustomization){
+    public NimConnect messageNotifierCustomization(MessageNotifierCustomization messageNotifierCustomization){
         sdkOptions.messageNotifierCustomization = messageNotifierCustomization;
         return this;
     }
 
-    public NeteaseConnect registerMiPush(String certificate, String appId, String appKey){
+    public NimConnect registerMiPush(String certificate, String appId, String appKey){
         NIMPushClient.registerMiPush(Contexts.getContext(), certificate, appId, appkey);
         return this;
     }
@@ -80,7 +80,7 @@ public class NeteaseConnect {
         NIMClient.init(Contexts.getContext(), loginInfo, sdkOptions);
     }
 
-    private NeteaseConnect(){
+    private NimConnect(){
         sdkOptions = new SDKOptions();
         sdkOptions.databaseEncryptKey = "netease_daohen";
         if (!Strings.isNull(NeteasePreferences.get().getAccount()) && !Strings.isNull(NeteasePreferences.get().getToken())){
@@ -88,10 +88,10 @@ public class NeteaseConnect {
         }
     }
 
-    private static final Singleton<NeteaseConnect> gDefault = new Singleton<NeteaseConnect>() {
+    private static final Singleton<NimConnect> gDefault = new Singleton<NimConnect>() {
         @Override
-        protected NeteaseConnect create() {
-            return new NeteaseConnect();
+        protected NimConnect create() {
+            return new NimConnect();
         }
     };
 }
