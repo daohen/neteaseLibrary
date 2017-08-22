@@ -39,7 +39,7 @@ public class NimPreferences {
     private SharedPreferences preferences;
 
     private NimPreferences(){
-        preferences = Contexts.getContext().getSharedPreferences("netease", Context.MODE_PRIVATE);
+        preferences = Contexts.get().getContext().getSharedPreferences("netease", Context.MODE_PRIVATE);
     }
 
     private static final Singleton<NimPreferences> gDefault = new Singleton<NimPreferences>() {

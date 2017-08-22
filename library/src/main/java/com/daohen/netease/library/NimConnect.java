@@ -69,7 +69,7 @@ public class NimConnect {
     }
 
     public NimConnect registerMiPush(String certificate, String appId, String appKey){
-        NIMPushClient.registerMiPush(Contexts.getContext(), certificate, appId, appkey);
+        NIMPushClient.registerMiPush(Contexts.get().getContext(), certificate, appId, appkey);
         return this;
     }
 
@@ -77,7 +77,7 @@ public class NimConnect {
         if (Strings.isNull(sdkOptions.appKey))
             throw new NullPointerException("NeteaseConnect里面的appkey没有设置，请调用register()方法");
 
-        NIMClient.init(Contexts.getContext(), loginInfo, sdkOptions);
+        NIMClient.init(Contexts.get().getContext(), loginInfo, sdkOptions);
     }
 
     private NimConnect(){

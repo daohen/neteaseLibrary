@@ -20,14 +20,14 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Contexts.setContext(this);
+        Contexts.get().setContext(this);
 
         NimConnect.get().register(appkey)
                 .preloadAttach(true)
                 .sdkStorageRootPath(Files.getFilesPath())
                 .sessionReadAck(true)
                 .statusBarNotificationConfig(new StatusBarNotificationConfig())
-                .thumbnailSize(Contexts.getScreenWidth() / 3)
+                .thumbnailSize(Contexts.get().getScreenWidth() / 3)
                 .init();
 
 
